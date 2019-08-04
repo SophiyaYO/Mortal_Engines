@@ -152,7 +152,8 @@ public class MachinesManagerImpl implements MachinesManager {
             ( (Fighter) machines.get(fighterName)).toggleAggressiveMode();
 
         }
-        return null;
+        return String.format(OutputMessages.fighterOperationSuccessful,
+                fighterName);
     }
 
     @Override
@@ -161,6 +162,7 @@ public class MachinesManagerImpl implements MachinesManager {
             ((Tank) machines.get(tankName)).toggleDefenseMode();
         }
 
-        return null;
+        return String.format(OutputMessages.tankOperationSuccessful,
+                tankName);
     }
 }
