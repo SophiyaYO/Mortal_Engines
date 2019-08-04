@@ -1,7 +1,6 @@
 package core;
 
 import common.OutputMessages;
-import common.interfaces.OutputWriter;
 import core.factories.MachineFactoryImpl;
 import core.factories.PilotFactoryImpl;
 import core.interfaces.MachineFactory;
@@ -11,9 +10,6 @@ import entities.interfaces.Fighter;
 import entities.interfaces.Machine;
 import entities.interfaces.Pilot;
 import entities.interfaces.Tank;
-import entities.machines.FighterImpl;
-import entities.machines.TankImpl;
-import entities.pilots.PilotImpl;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,7 +51,7 @@ public class MachinesManagerImpl implements MachinesManager {
         MachineFactory machineFactory = new MachineFactoryImpl();
         Tank tank = machineFactory.createTank(name, attackPoints, defensePoints);
 
-        String output ;
+        String output;
 
         if (!machines.containsKey(name)) {
             machines.putIfAbsent(name, tank);
@@ -76,7 +72,7 @@ public class MachinesManagerImpl implements MachinesManager {
         MachineFactory machineFactory = new MachineFactoryImpl();
         Fighter fighter = machineFactory.createFighter(name, attackPoints, defensePoints);
 
-        String output ;
+        String output;
 
         if (!machines.containsKey(name)) {
             machines.putIfAbsent(name, fighter);
@@ -94,8 +90,8 @@ public class MachinesManagerImpl implements MachinesManager {
 
     @Override
     public String engageMachine(String selectedPilotName, String selectedMachineName) {
-            pilots.get(selectedPilotName).addMachine(machines.get(selectedMachineName));
-            machines.get(selectedMachineName).setPilot(pilots.get(selectedPilotName));
+        pilots.get(selectedPilotName).addMachine(machines.get(selectedMachineName));
+        machines.get(selectedMachineName).setPilot(pilots.get(selectedPilotName));
 
         if (machines.get(selectedMachineName).getPilot() != null) {
             return String.format(OutputMessages.machineHasPilotAlready,
@@ -136,7 +132,7 @@ public class MachinesManagerImpl implements MachinesManager {
 
         } else {
 
-            if (!machines.containsKey(attackingMachineName)){
+            if (!machines.containsKey(attackingMachineName)) {
                 output = String.format(OutputMessages.machineNotFound,
                         attackingMachineName);
             } else {
@@ -161,9 +157,12 @@ public class MachinesManagerImpl implements MachinesManager {
     @Override
     public String toggleFighterAggressiveMode(String fighterName) {
         if (machines.containsKey(fighterName)) {
-            ( (Fighter) machines.get(fighterName)).toggleAggressiveMode();
+            ((Fighter) machines.get(fighterName)).toggleAggressiveMode();
 
+        } else {
+            return String.format(OutputMessages.notSupportedOperation, fighterName);
         }
+
         return String.format(OutputMessages.fighterOperationSuccessful,
                 fighterName);
     }
@@ -172,6 +171,8 @@ public class MachinesManagerImpl implements MachinesManager {
     public String toggleTankDefenseMode(String tankName) {
         if (machines.containsKey(tankName)) {
             ((Tank) machines.get(tankName)).toggleDefenseMode();
+        } else {
+            return String.format(OutputMessages.notSupportedOperation, tankName);
         }
 
         return String.format(OutputMessages.tankOperationSuccessful,
