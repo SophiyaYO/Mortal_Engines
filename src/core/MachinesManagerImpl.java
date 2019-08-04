@@ -84,8 +84,7 @@ public class MachinesManagerImpl implements MachinesManager {
             output = String.format(OutputMessages.fighterManufactured,
                     fighter.getName(),
                     fighter.getAttackPoints(),
-                    fighter.getDefensePoints(),
-                    fighter.getAggressiveMode() ? "ON" : "OFF");
+                    fighter.getDefensePoints());
         } else {
             output = String.format(OutputMessages.machineExists, fighter.getName());
         }
