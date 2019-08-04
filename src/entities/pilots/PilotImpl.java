@@ -47,6 +47,19 @@ public class PilotImpl implements Pilot {
 
     @Override
     public String report() {
+
+        StringBuilder builder = new StringBuilder();
+
+        builder
+                .append(String.format("%s – %d machines ",
+                        this.getName(),
+                        this.machines.size()))
+                .append(System.lineSeparator());
+
+
+        for (Machine machine : machines) {
+
+        }
         return getName();
     }
 }
