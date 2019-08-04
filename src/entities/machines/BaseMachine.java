@@ -101,10 +101,6 @@ public abstract class BaseMachine implements Machine {
         StringBuilder builder = new StringBuilder();
 
         builder
-                .append(String.format("- %s", this.getName()))
-                .append(System.lineSeparator())
-                .append("*Type: Fighter")
-                .append(System.lineSeparator())
                 .append(String.format("*Health: %.2f", this.getHealthPoints()))
                 .append(System.lineSeparator())
                 .append(String.format("*Attack: %.2f", this.getHealthPoints()))
