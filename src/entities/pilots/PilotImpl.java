@@ -56,10 +56,12 @@ public class PilotImpl implements Pilot {
                         this.machines.size()))
                 .append(System.lineSeparator());
 
-
-        for (Machine machine : machines) {
-
+        for (Machine machine : this.machines) {
+            builder
+                    .append(machine.toString())
+                    .append(System.lineSeparator());
         }
-        return getName();
+
+        return builder.toString().trim();
     }
 }
