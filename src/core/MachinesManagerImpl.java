@@ -97,6 +97,11 @@ public class MachinesManagerImpl implements MachinesManager {
             pilots.get(selectedPilotName).addMachine(machines.get(selectedMachineName));
             machines.get(selectedMachineName).setPilot(pilots.get(selectedPilotName));
 
+        if (machines.get(selectedMachineName).getPilot() != null) {
+            return String.format(OutputMessages.machineHasPilotAlready,
+                    selectedMachineName);
+        }
+
         return String.format(OutputMessages.machineEngaged,
                 pilots.get(selectedPilotName).getName(),
                 machines.get(selectedMachineName).getName());
