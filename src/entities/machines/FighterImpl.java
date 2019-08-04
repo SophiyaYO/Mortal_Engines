@@ -68,7 +68,7 @@ public class FighterImpl extends BaseMachine implements Fighter {
                 .append(System.lineSeparator())
                 .append(super.toString())
                 .append(System.lineSeparator())
-                .append(String.format("%s",
+                .append(String.format("*Aggressive Mode(%s)",
                         this.aggressiveMode
                                 ? "ON"
                                 : "OFF"))
