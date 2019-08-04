@@ -91,13 +91,12 @@ public class MachinesManagerImpl implements MachinesManager {
 
     @Override
     public String engageMachine(String selectedPilotName, String selectedMachineName) {
-        if (pilots.containsKey(selectedPilotName) && machines.containsKey(selectedMachineName)) {
             pilots.get(selectedPilotName).addMachine(machines.get(selectedMachineName));
             machines.get(selectedMachineName).setPilot(pilots.get(selectedPilotName));
-        }
 
-        //todo something is wrong with the return. There must be sth else
-        return null;
+        return String.format(OutputMessages.machineEngaged,
+                pilots.get(selectedPilotName).getName(),
+                machines.get(selectedMachineName).getName());
     }
 
     @Override
