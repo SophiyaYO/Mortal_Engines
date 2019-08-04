@@ -59,4 +59,24 @@ public class TankImpl extends BaseMachine implements Tank {
     public List<String> getTargets() {
         return super.getTargets();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder
+                .append(String.format("- %s", this.getName()))
+                .append(System.lineSeparator())
+                .append("*Type: Tank")
+                .append(System.lineSeparator())
+                .append(super.toString())
+                .append(System.lineSeparator())
+                .append(String.format("%s",
+                        this.defenceMode
+                                ? "ON"
+                                : "OFF"))
+                .append(System.lineSeparator());
+
+        return builder.toString().trim();
+    }
 }
