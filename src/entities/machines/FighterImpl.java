@@ -56,4 +56,27 @@ public class FighterImpl extends BaseMachine implements Fighter {
     public List<String> getTargets() {
         return super.getTargets();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder
+                .append(String.format("- %s", this.getName()))
+                .append(System.lineSeparator())
+                .append("*Type: Fighter")
+                .append(System.lineSeparator())
+                .append(super.toString())
+                .append(System.lineSeparator())
+                .append(String.format("%s",
+                        this.aggressiveMode
+                                ? "ON"
+                                : "OFF"))
+                .append(System.lineSeparator())
+
+        ;
+
+
+        return super.toString();
+    }
 }
