@@ -56,7 +56,10 @@ public class MachinesManagerImpl implements MachinesManager {
         if (!machines.containsKey(name)) {
             machines.putIfAbsent(name, tank);
 
-            output = String.format(OutputMessages.tankManufactured, name);
+            output = String.format(OutputMessages.tankManufactured,
+                    tank.getName(),
+                    tank.getAttackPoints(),
+                    tank.getDefensePoints());
         } else {
             output = String.format("Machine %s is manufactured already", name);
         }
@@ -69,10 +72,21 @@ public class MachinesManagerImpl implements MachinesManager {
         MachineFactory machineFactory = new MachineFactoryImpl();
         Fighter fighter = machineFactory.createFighter(name, attackPoints, defensePoints);
 
-        machines.putIfAbsent(name, fighter);
+        String output ;
 
-        //todo something is wrong with the return. There must be sth else
-        return fighter.getName();
+        if (!machines.containsKey(name)) {
+            machines.putIfAbsent(name, fighter);
+
+            output = String.format(OutputMessages.fighterManufactured,
+                    fighter.getName(),
+                    fighter.getAttackPoints(),
+                    fighter.getDefensePoints(),
+                    fighter.getAggressiveMode() ? "ON" : "OFF");
+        } else {
+            output = String.format("Machine %s is manufactured already", fighter.getName());
+        }
+
+        return output;
     }
 
     @Override
