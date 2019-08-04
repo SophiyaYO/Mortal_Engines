@@ -26,7 +26,16 @@ public class MainController {
             String[] args = this.reader.readLine().split("\\s+");
             String command = args[0];
 
+            String output = this.commandInterpreter.interpret(command, args);
 
+            if (output.equals("Over")) {
+                this.writer.writeLine(aggregator.toString().trim());
+                this.isRunning = false;
+            } else {
+                aggregator
+                        .append(output)
+                        .append(System.lineSeparator());
+            }
 
 
         }
