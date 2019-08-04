@@ -41,6 +41,10 @@ public class MachinesManagerImpl implements MachinesManager {
         PilotFactory pilotFactory = new PilotFactoryImpl();
         Pilot pilot = pilotFactory.createPilot(name);
 
+        if (pilots.containsKey(name)) {
+            return String.format(OutputMessages.pilotExists, name);
+        }
+
         pilots.put(name, pilot);
 
         return String.format(OutputMessages.pilotHired, pilot.getName());
