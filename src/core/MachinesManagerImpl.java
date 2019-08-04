@@ -109,7 +109,7 @@ public class MachinesManagerImpl implements MachinesManager {
 
     @Override
     public String attackMachines(String attackingMachineName, String defendingMachineName) {
-        String output;
+        String output = "";
 
         if (machines.containsKey(attackingMachineName) && machines.containsKey(defendingMachineName)) {
 
@@ -145,7 +145,7 @@ public class MachinesManagerImpl implements MachinesManager {
             }
         }
 
-        return null;
+        return output;
     }
 
     @Override
