@@ -74,6 +74,6 @@ public class FighterImpl extends BaseMachine implements Fighter {
                                 : "OFF"))
                 .append(System.lineSeparator());
 
-        return super.toString();
+        return builder.toString().trim();
     }
 }
