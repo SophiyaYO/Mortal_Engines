@@ -95,4 +95,28 @@ public abstract class BaseMachine implements Machine {
         }
 
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder
+                .append(String.format("- %s", this.getName()))
+                .append(System.lineSeparator())
+                .append("*Type: Fighter")
+                .append(System.lineSeparator())
+                .append(String.format("*Health: %.2f", this.getHealthPoints()))
+                .append(System.lineSeparator())
+                .append(String.format("*Attack: %.2f", this.getHealthPoints()))
+                .append(System.lineSeparator())
+                .append(String.format("*Defense: %.2f", this.getDefensePoints()))
+                .append(System.lineSeparator())
+                .append(String.format("*Targets: %s",
+                        this.getTargets().size() != 0 ?
+                                String.join(", ", this.getTargets()) :
+                                "None"))
+                .append(System.lineSeparator());
+
+        return builder.toString().trim();
+    }
 }
