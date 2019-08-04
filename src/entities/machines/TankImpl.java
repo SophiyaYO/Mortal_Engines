@@ -71,7 +71,7 @@ public class TankImpl extends BaseMachine implements Tank {
                 .append(System.lineSeparator())
                 .append(super.toString())
                 .append(System.lineSeparator())
-                .append(String.format("%s",
+                .append(String.format("*Defense Mode(%s)",
                         this.defenceMode
                                 ? "ON"
                                 : "OFF"))
