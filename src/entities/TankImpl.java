@@ -1,50 +1,53 @@
-package entities.machines;
+package entities;
 
-import entities.interfaces.Fighter;
 import entities.interfaces.Pilot;
+import entities.interfaces.Tank;
 
 import java.util.List;
 
-public class FighterImpl extends BaseMachine implements Fighter {
+public class TankImpl extends BaseMachine implements Tank {
     private static final double INITIAL_HEALTH_POINTS = 200d;
-    private static final double ATTACK_POINTS_MODIFIER = 50d;
-    private static final double DEFENCE_POINTS_MODIFIER = 25d;
+    private static final double ATTACK_POINTS_MODIFIER = 40d;
+    private static final double DEFENCE_POINTS_MODIFIER = 30d;
 
-    private String name;
-    private boolean aggressiveMode;
+    private boolean defenceMode;
     private double attackPointsModifier;
     private double deffencePointsModifier;
 
-    public FighterImpl(String name, double attackPoints, double defensePoints) {
+    public TankImpl(String name, double attackPoints, double defensePoints) {
         super(name, attackPoints, defensePoints, INITIAL_HEALTH_POINTS);
-        this.aggressiveMode = true;
+        this.defenceMode = true;
         this.attackPointsModifier = ATTACK_POINTS_MODIFIER;
         this.deffencePointsModifier = DEFENCE_POINTS_MODIFIER;
     }
 
-
-    @Override
-    public boolean getAggressiveMode() {
-        return this.aggressiveMode;
-    }
-
-    public void setAggressiveMode(boolean aggressiveMode) {
-        this.aggressiveMode = aggressiveMode;
+    public void setDefenceMode(boolean defenceMode) {
+        this.defenceMode = defenceMode;
     }
 
     @Override
-    public void toggleAggressiveMode() {
-        if (this.getAggressiveMode()) {
-            this.setAggressiveMode(false);
-            super.setAttackPoints(getAttackPoints() - this.attackPointsModifier);
-            super.setDefensePoints(getDefensePoints() + this.deffencePointsModifier);
+    public double getHealthPoints() {
+        return super.getHealthPoints();
+    }
 
-        } else {
-            this.setAggressiveMode(true);
+    @Override
+    public boolean getDefenseMode() {
+        return this.defenceMode;
+    }
+
+    @Override
+    public void toggleDefenseMode() {
+        if (getDefenseMode()) {
+            this.setDefenceMode(false);
             super.setAttackPoints(getAttackPoints() + this.attackPointsModifier);
             super.setDefensePoints(getDefensePoints() - this.deffencePointsModifier);
 
+        } else {
+            this.setDefenceMode(true);
+            setAttackPoints(getAttackPoints() - this.attackPointsModifier);
+            setDefensePoints(getDefensePoints() + this.deffencePointsModifier);
         }
+
     }
 
     @Override
@@ -64,12 +67,12 @@ public class FighterImpl extends BaseMachine implements Fighter {
         builder
                 .append(String.format("- %s", this.getName()))
                 .append(System.lineSeparator())
-                .append("*Type: Fighter")
+                .append("*Type: Tank")
                 .append(System.lineSeparator())
                 .append(super.toString())
                 .append(System.lineSeparator())
-                .append(String.format("*Aggressive Mode(%s)",
-                        this.aggressiveMode
+                .append(String.format("*Defense Mode(%s)",
+                        this.defenceMode
                                 ? "ON"
                                 : "OFF"))
                 .append(System.lineSeparator());

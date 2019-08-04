@@ -1,7 +1,7 @@
 import core.MachinesManagerImpl;
 
-import core.factories.MachineFactoryImpl;
-import core.factories.PilotFactoryImpl;
+import core.MachineFactoryImpl;
+import core.PilotFactoryImpl;
 import core.interfaces.MachineFactory;
 import core.interfaces.PilotFactory;
 import core.interfaces.MachinesManager;
@@ -18,6 +18,8 @@ public class Main {
         MachineFactory machineFactory = new MachineFactoryImpl();
         Map<String, Pilot> pilots = new LinkedHashMap<>();
         Map<String, Machine> machines = new LinkedHashMap<>();
+
+        System.out.println();
 
         MachinesManager machinesManager = new MachinesManagerImpl(pilotFactory, machineFactory, pilots, machines);
 

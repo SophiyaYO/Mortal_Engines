@@ -1,8 +1,8 @@
-package core.factories;
+package core;
 
 import core.interfaces.PilotFactory;
 import entities.interfaces.Pilot;
-import entities.pilots.PilotImpl;
+import entities.PilotImpl;
 
 public class PilotFactoryImpl implements PilotFactory {
     @Override

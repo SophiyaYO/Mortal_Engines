@@ -1,10 +1,10 @@
-package core.factories;
+package core;
 
 import core.interfaces.MachineFactory;
 import entities.interfaces.Fighter;
 import entities.interfaces.Tank;
-import entities.machines.FighterImpl;
-import entities.machines.TankImpl;
+import entities.FighterImpl;
+import entities.TankImpl;
 
 public class MachineFactoryImpl implements MachineFactory {
 

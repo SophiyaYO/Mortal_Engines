@@ -1,8 +1,6 @@
 package core;
 
 import common.OutputMessages;
-import core.factories.MachineFactoryImpl;
-import core.factories.PilotFactoryImpl;
 import core.interfaces.MachineFactory;
 import core.interfaces.MachinesManager;
 import core.interfaces.PilotFactory;

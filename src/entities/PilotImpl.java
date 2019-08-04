@@ -1,4 +1,4 @@
-package entities.pilots;
+package entities;
 
 import entities.interfaces.Machine;
 import entities.interfaces.Pilot;
