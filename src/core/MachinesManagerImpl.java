@@ -61,7 +61,7 @@ public class MachinesManagerImpl implements MachinesManager {
                     tank.getAttackPoints(),
                     tank.getDefensePoints());
         } else {
-            output = String.format("Machine %s is manufactured already", name);
+            output = String.format(OutputMessages.machineExists, tank.getName());
         }
 
         return output;
@@ -83,7 +83,7 @@ public class MachinesManagerImpl implements MachinesManager {
                     fighter.getDefensePoints(),
                     fighter.getAggressiveMode() ? "ON" : "OFF");
         } else {
-            output = String.format("Machine %s is manufactured already", fighter.getName());
+            output = String.format(OutputMessages.machineExists, fighter.getName());
         }
 
         return output;
@@ -142,6 +142,10 @@ public class MachinesManagerImpl implements MachinesManager {
 
     @Override
     public String pilotReport(String pilotName) {
+        if (!pilots.containsKey(pilotName)) {
+            return String.format(OutputMessages.pilotNotFound, pilotName);
+        }
+
         return pilots.get(pilotName).report();
 
     }
