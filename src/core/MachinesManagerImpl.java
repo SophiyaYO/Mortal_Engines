@@ -101,6 +101,8 @@ public class MachinesManagerImpl implements MachinesManager {
 
     @Override
     public String attackMachines(String attackingMachineName, String defendingMachineName) {
+        String output;
+
         if (machines.containsKey(attackingMachineName) && machines.containsKey(defendingMachineName)) {
 
             machines.get(attackingMachineName).attack(defendingMachineName);
@@ -115,12 +117,26 @@ public class MachinesManagerImpl implements MachinesManager {
 
                 if (attackResult <= 0) {
                     machines.get(defendingMachineName).setHealthPoints(0d);
+
                 }
+
+                output = String.format(OutputMessages.attackSuccessful,
+                        defendingMachineName,
+                        attackingMachineName,
+                        machines.get(defendingMachineName).getHealthPoints());
             }
 
+        } else {
+
+            if (!machines.containsKey(attackingMachineName)){
+                output = String.format(OutputMessages.machineNotFound,
+                        attackingMachineName);
+            } else {
+                output = String.format(OutputMessages.machineNotFound,
+                        defendingMachineName);
+            }
         }
 
-        //todo
         return null;
     }
 
